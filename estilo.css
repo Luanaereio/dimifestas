@@ -1,0 +1,296 @@
+/* =====================================================================
+   Dimi Festas, espaco para locacao. Site de uma pagina, fiel ao mockup
+   dela (largura de desenho 1215 px). Marinho profundo + rosa + amarelo +
+   azul + verde-agua; titulos arredondados (Baloo 2), manuscrita (Caveat)
+   e texto (Nunito).
+   ===================================================================== */
+:root {
+  --marinho: #0B1B3A;
+  --rosa:    #FF2D9B;
+  --amarelo: #FFD400;
+  --azul:    #2EA7FF;
+  --verde:   #00C9A7;
+  --nuvem:   #DCEBFB;
+  --texto:   #2B3447;
+  --largura: 1215px;
+  --baloo:   'Baloo 2', 'Nunito', sans-serif;
+  --caveat:  'Caveat', 'Segoe Script', cursive;
+  --nunito:  'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--nunito);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--texto);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a { color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+h2 { margin: 0; }
+.caixa { width: min(100%, var(--largura)); margin: 0 auto; position: relative; }
+
+/* ---------- pecas comuns ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 44px; padding: 0 24px;
+  border-radius: 999px;
+  background: var(--rosa); color: #fff;
+  font-family: var(--nunito); font-weight: 800; font-size: 15px;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(255, 45, 155, 0.28);
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+.botao:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 26px rgba(255, 45, 155, 0.34); }
+.botao-vazio {
+  background: transparent; color: var(--rosa);
+  border: 2px solid var(--rosa); box-shadow: none;
+  height: 36px; padding: 0 22px;
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.botao-vazio:hover { background: var(--rosa); color: #fff; filter: none; box-shadow: 0 8px 22px rgba(255, 45, 155, 0.28); }
+.seta { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.icone-redondo { width: 30px; height: 30px; border-radius: 50%; background: rgba(255, 255, 255, 0.22); display: grid; place-items: center; flex: none; }
+.icone-redondo svg { width: 18px; height: 18px; }
+.olho { margin: 0 0 4px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rosa); }
+.olho-claro { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; }
+.manuscrito { font-family: var(--caveat); font-weight: 700; font-size: 36px; line-height: 0.95; color: var(--rosa); display: inline-block; }
+.coracao { width: 18px; height: 18px; fill: var(--rosa); vertical-align: -3px; margin-left: 6px; }
+.onda { position: absolute; left: 0; width: 100%; height: 30px; display: block; pointer-events: none; }
+.onda-baixo { bottom: -1px; }
+.onda-cima { top: -29px; }
+.nuvem { position: absolute; fill: var(--nuvem); width: 120px; height: 60px; pointer-events: none; }
+.mancha { position: absolute; border-radius: 50%; pointer-events: none; }
+.confete { position: absolute; fill: none; stroke-width: 4; stroke-linecap: round; pointer-events: none; }
+
+/* =====================================================================
+   CABECALHO
+   ===================================================================== */
+.topo { position: sticky; top: 0; z-index: 30; background: #fff; box-shadow: 0 1px 0 rgba(11, 27, 58, 0.06); }
+.topo-dentro { height: 100px; display: flex; align-items: center; padding: 0 40px 0 38px; gap: 20px; }
+.logo { flex: none; line-height: 0; }
+.logo img { width: 216px; height: auto; display: block; }
+.menu { flex: 1; display: flex; justify-content: flex-start; padding-left: 46px; }
+.menu ul { display: flex; gap: 36px; }
+.menu a { position: relative; display: block; padding: 6px 0; font-size: 15px; font-weight: 600; color: var(--marinho); text-decoration: none; transition: color 0.15s; }
+.menu a:hover { color: var(--rosa); }
+.menu a[aria-current] { color: var(--rosa); font-weight: 700; }
+.menu a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 3px; border-radius: 3px; background: var(--rosa); }
+.botao-topo { padding: 0 26px 0 12px; }
+.hamburguer { display: none; width: 44px; height: 44px; border: 0; background: transparent; padding: 10px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
+.hamburguer span { display: block; height: 3px; border-radius: 3px; background: var(--marinho); transition: transform 0.2s, opacity 0.2s; }
+.hamburguer[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburguer[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.hamburguer[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.menu-celular { display: none; }
+
+/* =====================================================================
+   HEROI
+   ===================================================================== */
+.heroi { position: relative; height: 345px; overflow: hidden; background: var(--marinho); color: #fff; }
+/* a foto comeca a 330 px da borda esquerda da caixa de 1215 e vai ate a borda direita da tela */
+.heroi-foto {
+  position: absolute; top: 0; bottom: 0; right: 0;
+  left: calc(50% - var(--largura) / 2 + 330px);
+  background: url("img/heroi.jpg") left center / cover no-repeat;
+}
+.heroi-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11, 27, 58, 0.55), rgba(11, 27, 58, 0) 32%); }
+/* o painel escuro com a borda rasgada, como papel */
+.heroi-painel {
+  position: absolute; top: 0; bottom: 0; left: 0;
+  width: calc(50% - var(--largura) / 2 + 470px);
+  background: var(--marinho);
+  clip-path: polygon(0 0, 85% 0, 87.5% 4%, 84.5% 9%, 88.5% 14%, 85.5% 19%, 89.5% 24%, 86.5% 30%, 90.5% 35%, 87.5% 41%, 91.5% 46%, 88.5% 52%, 92.5% 57%, 89.5% 63%, 93.5% 68%, 90.5% 74%, 94.5% 79%, 92.5% 85%, 96.5% 90%, 95% 95%, 100% 100%, 0 100%);
+}
+.heroi-dentro { height: 100%; padding: 28px 0 0 60px; }
+.heroi-logo { display: block; width: 400px; height: auto; margin: 8px 0 0 -8px; }
+.heroi-frase {
+  margin: 10px 0 0 4px;
+  font-family: var(--caveat); font-weight: 600; font-size: 30px; line-height: 1;
+  transform: rotate(-3.5deg); transform-origin: left center;
+}
+.heroi-frase .amarelo { color: var(--amarelo); }
+.heroi-frase .rosa { color: var(--rosa); }
+.heroi-selos { display: flex; gap: 30px; margin: 20px 0 0 -2px; }
+.heroi-selos li { display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 1.25; }
+.heroi-selos b { display: block; font-weight: 800; }
+.bola { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; flex: none; }
+.bola svg { width: 20px; height: 20px; }
+.rosa-f { background: var(--rosa); }
+.verde-f { background: var(--verde); }
+.amarelo-f { background: var(--amarelo); }
+.botao-heroi { margin-top: 20px; height: 36px; padding: 0 22px; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+.heroi-manuscrito {
+  position: absolute; right: 40px; bottom: 10px; margin: 0;
+  font-family: var(--caveat); font-weight: 600; font-size: 26px; line-height: 1; text-align: center;
+  transform: rotate(-9deg);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+.heroi-manuscrito .coracao { width: 16px; height: 16px; margin-left: 4px; }
+/* enquanto a foto do heroi for a recortada do mockup (que ja traz a frase desenhada) */
+.escondido-provisorio { visibility: hidden; }
+
+/* =====================================================================
+   SOBRE
+   ===================================================================== */
+.sobre { position: relative; padding: 35px 0 40px; overflow: hidden; background: #fff; }
+.sobre-dentro { display: grid; grid-template-columns: 385px minmax(0, 1fr); padding-left: 95px; align-items: start; }
+.sobre-texto { position: relative; padding-right: 50px; }
+.sobre h2, .galeria h2 { font-family: var(--baloo); font-weight: 800; font-size: 25px; line-height: 1; color: var(--marinho); }
+.sobre h2 .manuscrito, .galeria h2 .manuscrito { font-size: 32px; line-height: 0.85; }
+.sobre-texto p:not(.olho) { margin: 13px 0 0; max-width: 318px; font-size: 13px; line-height: 1.2; }
+.sobre-texto .botao-vazio { margin-top: 14px; }
+.confete-titulo { left: 312px; top: 14px; width: 50px; height: 40px; }
+.rabisco-coracao { position: absolute; left: 308px; top: 56px; width: 36px; height: 36px; fill: none; stroke: var(--rosa); stroke-width: 2.5; stroke-linejoin: round; transform: rotate(14deg); }
+.sobre-fotos { display: grid; grid-template-columns: 376px 270px; grid-template-rows: 116px 114px; gap: 6px 10px; }
+.sobre-fotos img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.sobre-foto-grande { grid-row: 1 / 3; }
+/* nuvens e manchas da secao */
+.nuvem-a { left: -24px; top: 6px; }
+.nuvem-b { right: -16px; top: 6px; width: 110px; height: 55px; }
+.nuvem-c { left: 74px; top: 150px; width: 64px; height: 32px; }
+.nuvem-d { right: 72px; top: 150px; width: 70px; height: 35px; }
+.mancha-amarela { left: -46px; top: 56px; width: 92px; height: 122px; background: var(--amarelo); }
+.mancha-azul { left: -42px; top: 176px; width: 84px; height: 84px; background: var(--azul); }
+.mancha-rosa { right: -32px; top: 152px; width: 74px; height: 62px; background: var(--rosa); }
+.mancha-verde { right: -26px; top: 206px; width: 76px; height: 76px; background: var(--verde); }
+.confete-sobre-dir { right: 18px; top: 112px; width: 60px; height: 70px; }
+
+/* =====================================================================
+   FESTAS (faixa de servicos)
+   ===================================================================== */
+.festas { position: relative; background: var(--marinho); color: #fff; padding: 22px 0 30px; }
+.festas-lista { display: grid; grid-template-columns: repeat(6, 1fr); padding: 0 32px; }
+.festas-lista li { position: relative; text-align: center; padding: 0 6px; }
+.festas-lista li + li::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: rgba(255, 255, 255, 0.28); }
+.anel { width: 54px; height: 54px; border-radius: 50%; border: 2.5px solid; display: grid; place-items: center; margin: 0 auto 10px; }
+.anel svg { width: 28px; height: 28px; }
+.rosa-b { border-color: var(--rosa); }
+.amarelo-b { border-color: var(--amarelo); }
+.azul-b { border-color: var(--azul); }
+.festas-lista b { display: block; font-size: 14.5px; font-weight: 800; line-height: 1.2; white-space: nowrap; }
+.festas-lista li > span:last-child { display: block; font-size: 12.5px; opacity: 0.92; margin-top: 3px; }
+.confete-esq { left: 48px; top: 34px; width: 60px; height: 80px; }
+.confete-dir { right: 48px; top: 34px; width: 60px; height: 80px; }
+
+/* =====================================================================
+   GALERIA
+   ===================================================================== */
+.galeria { position: relative; padding: 22px 0 26px; overflow: hidden; background: #fff; }
+.galeria-dentro { display: grid; grid-template-columns: 257px minmax(0, 1fr); padding: 0 57px 0 65px; align-items: start; }
+.galeria-texto { position: relative; padding-right: 30px; }
+.galeria h2 { font-size: 29px; line-height: 0.95; }
+.galeria h2 .manuscrito { font-size: 36px; line-height: 0.85; }
+.galeria-texto p:not(.olho) { margin: 12px 0 0; max-width: 200px; font-size: 12.5px; line-height: 1.35; }
+.galeria-texto .botao-vazio { margin-top: 12px; }
+.confete-galeria { left: 178px; top: -8px; width: 50px; height: 40px; }
+.galeria-fotos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.galeria-fotos img { display: block; width: 100%; height: 188px; object-fit: cover; border-radius: 10px; }
+.nuvem-e { left: -30px; bottom: -6px; width: 110px; height: 55px; }
+.nuvem-f { right: -20px; bottom: -6px; }
+
+/* =====================================================================
+   RODAPE
+   ===================================================================== */
+.rodape { position: relative; background: var(--marinho); color: #fff; padding: 14px 0 0; overflow: hidden; }
+.rodape-dentro { display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; padding: 0 24px 0 38px; min-height: 92px; z-index: 1; }
+.rodape-logo { width: 216px; height: auto; display: block; flex: none; }
+.rodape-frase { margin: 0 4px; flex: 0 1 196px; font-family: var(--caveat); font-weight: 600; font-size: 20px; line-height: 1.05; text-align: center; transform: rotate(-5deg); }
+.rodape-frase .coracao { width: 16px; height: 16px; }
+.botao-whats { height: 68px; border-radius: 34px; padding: 0 28px 0 14px; gap: 12px; font-weight: 400; font-size: 15px; line-height: 1.15; flex: none; }
+.botao-whats-texto { text-align: left; }
+.botao-whats-texto b { display: block; font-weight: 800; }
+.icone-redondo.branco { width: 40px; height: 40px; background: #fff; color: var(--rosa); }
+.icone-redondo.branco svg { width: 24px; height: 24px; }
+.rodape-texto { margin: 0; flex: 0 1 180px; font-size: 12.5px; line-height: 1.5; }
+.redes { display: flex; gap: 8px; padding-right: 16px; border-right: 1px solid rgba(255, 255, 255, 0.35); flex: none; }
+.redes a { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid #fff; display: grid; place-items: center; color: #fff; transition: background 0.15s, color 0.15s; }
+.redes a:hover { background: #fff; color: var(--marinho); }
+.redes svg { width: 18px; height: 18px; }
+.endereco { display: flex; align-items: center; gap: 8px; font-style: normal; font-size: 11.5px; line-height: 1.45; white-space: nowrap; }
+.endereco svg { width: 20px; height: 20px; color: var(--rosa); flex: none; }
+.manchas-pe { display: block; width: 100%; height: 62px; margin-top: 12px; }
+
+/* =====================================================================
+   TELAS MENORES
+   ===================================================================== */
+@media (max-width: 1214px) {
+  .caixa { padding-left: 20px; padding-right: 20px; }
+  .topo-dentro { padding: 0 20px; }
+  .menu ul { gap: 24px; margin-left: 0; }
+  .heroi-foto { left: 36%; }
+  .heroi-painel { width: 42%; }
+  .sobre-dentro { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 30px; padding-left: 20px; }
+  .sobre-fotos { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: 1fr 1fr; }
+  .galeria-dentro { grid-template-columns: 230px minmax(0, 1fr); padding: 0 20px; gap: 24px; }
+  .rodape-dentro { flex-wrap: wrap; justify-content: center; gap: 22px 28px; padding: 0 20px; }
+  .festas-lista b { white-space: normal; }
+}
+
+@media (max-width: 980px) {
+  .menu, .botao-topo { display: none; }
+  .hamburguer { display: flex; margin-left: auto; }
+  .topo-dentro { height: 76px; }
+  .logo img { width: 160px; }
+  .menu-celular { display: grid; gap: 2px; padding: 6px 20px 18px; background: #fff; border-top: 1px solid rgba(11, 27, 58, 0.08); }
+  .menu-celular[hidden] { display: none; }
+  .menu-celular a { padding: 12px 6px; font-weight: 700; font-size: 16px; color: var(--marinho); text-decoration: none; border-bottom: 1px solid rgba(11, 27, 58, 0.06); }
+
+  .heroi { height: auto; }
+  .heroi-foto { left: 0; }
+  .heroi-foto::after { background: linear-gradient(180deg, rgba(11, 27, 58, 0.86), rgba(11, 27, 58, 0.72)); }
+  .heroi-painel { display: none; }
+  .heroi-dentro { padding: 40px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .heroi-logo { width: min(100%, 400px); margin: 10px 0 0; }
+  .heroi-frase { margin: 16px 0 0; transform: none; }
+  .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 24px; margin: 22px 0 0; }
+  .heroi-selos li { text-align: left; }
+  .heroi-manuscrito { position: static; margin-top: 26px; transform: rotate(-4deg); }
+
+  .sobre { padding: 30px 0 30px; }
+  .sobre-dentro { grid-template-columns: 1fr; gap: 26px; }
+  .sobre-texto { padding-right: 0; }
+  .sobre-texto p:not(.olho) { max-width: 60ch; }
+  .confete-titulo, .rabisco-coracao { display: none; }
+  .sobre-fotos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .sobre-foto-grande { grid-row: auto; grid-column: 1 / 3; aspect-ratio: 16 / 9; }
+  .sobre-foto-pequena { aspect-ratio: 16 / 9; }
+  .mancha, .nuvem-c, .nuvem-d, .confete-sobre-dir { display: none; }
+
+  .festas { padding: 40px 0 30px; }
+  .festas-lista { grid-template-columns: repeat(3, 1fr); gap: 26px 0; padding: 0 20px; }
+  .festas-lista li:nth-child(4)::before { display: none; }
+  .confete-esq, .confete-dir { display: none; }
+
+  .galeria { padding: 50px 0 24px; }
+  .galeria-dentro { grid-template-columns: 1fr; gap: 22px; }
+  .galeria-texto p:not(.olho) { max-width: 60ch; }
+  .confete-galeria { display: none; }
+  .galeria-fotos { grid-template-columns: 1fr 1fr; }
+  .galeria-fotos img { height: auto; aspect-ratio: 1.08; }
+
+  .rodape-dentro { flex-direction: column; text-align: center; gap: 18px; }
+  .rodape-frase { transform: none; width: auto; margin: 0; }
+  .rodape-texto { width: auto; max-width: 36ch; }
+  .redes { padding-right: 0; border-right: 0; }
+  .botao-whats-texto { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .festas-lista { grid-template-columns: 1fr 1fr; }
+  .festas-lista li:nth-child(odd)::before { display: none; }
+  .festas-lista li:nth-child(4)::before { display: block; }
+  .sobre h2, .galeria h2 { font-size: 26px; }
+  .manuscrito { font-size: 32px; }
+  .heroi-frase { font-size: 27px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .botao, .botao:hover { transition: none; transform: none; }
+}
