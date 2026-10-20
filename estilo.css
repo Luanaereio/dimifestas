@@ -95,7 +95,7 @@ h2 { margin: 0; }
 /* a foto do salao (2073x758, com o logo pintado na parede a esquerda) preenche o heroi; na largura de desenho
    (1215) ela escala para 1215x444 e o heroi mostra quase tudo. O texto senta sobre a parede escura, abaixo do
    logo da foto, com um degrade no pe para a leitura em cima das mesas. */
-.heroi { position: relative; height: 430px; overflow: hidden; background: var(--marinho); color: #fff; }
+.heroi { position: relative; height: 480px; overflow: hidden; background: var(--marinho); color: #fff; }
 .heroi-foto {
   position: absolute; inset: 0;
   background: url("img/heroi.jpg") center top / cover no-repeat;
@@ -106,9 +106,11 @@ h2 { margin: 0; }
     linear-gradient(180deg, rgba(11, 27, 58, 0) 42%, rgba(11, 27, 58, 0.78) 100%),
     linear-gradient(90deg, rgba(11, 27, 58, 0.32), rgba(11, 27, 58, 0) 48%);
 }
-.heroi-dentro { height: 100%; padding: 28px 0 0 60px; }
+/* o recuo de cima fica como padding (nao como margin da frase): margin colapsaria e empurraria a caixa inteira,
+   levando a frase manuscrita absoluta para fora do heroi */
+.heroi-dentro { height: 100%; padding: 236px 0 0 36px; }
 .heroi-frase {
-  margin: 158px 0 0 4px;
+  margin: 0 0 0 4px;
   font-family: var(--caveat); font-weight: 600; font-size: 30px; line-height: 1;
   transform: rotate(-3.5deg); transform-origin: left center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
@@ -187,7 +189,8 @@ h2 { margin: 0; }
 .galeria-texto .botao-vazio { margin-top: 12px; }
 .confete-galeria { left: 178px; top: -8px; width: 50px; height: 40px; }
 .galeria-fotos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.galeria-fotos img { display: block; width: 100%; height: 188px; object-fit: cover; border-radius: 10px; }
+/* as quatro fotos dela sao em pe (cerca de 505x725): mostram inteiras, sem corte */
+.galeria-fotos img { display: block; width: 100%; height: auto; aspect-ratio: 410 / 557; object-fit: cover; border-radius: 10px; }
 .nuvem-e { left: -30px; bottom: -6px; width: 110px; height: 55px; }
 .nuvem-f { right: -20px; bottom: -6px; }
 
@@ -241,7 +244,7 @@ h2 { margin: 0; }
   .heroi-foto { position: static; aspect-ratio: 2073 / 758; background-position: center; }
   .heroi-foto::after { display: none; }
   .heroi-dentro { padding: 26px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .heroi-frase { margin: 12px 0 0; transform: none; }
+  .heroi-frase { margin: 0; transform: none; }
   .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 24px; margin: 22px 0 0; }
   .heroi-selos li { text-align: left; }
   .heroi-manuscrito { position: static; margin-top: 26px; transform: rotate(-4deg); }
@@ -266,7 +269,7 @@ h2 { margin: 0; }
   .galeria-texto p:not(.olho) { max-width: 60ch; }
   .confete-galeria { display: none; }
   .galeria-fotos { grid-template-columns: 1fr 1fr; }
-  .galeria-fotos img { height: auto; aspect-ratio: 1.08; }
+  .galeria-fotos img { aspect-ratio: 410 / 557; }
 
   .rodape-dentro { flex-direction: column; text-align: center; gap: 18px; }
   .rodape-frase { transform: none; width: auto; margin: 0; }
