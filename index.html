@@ -29,7 +29,7 @@
         <li><a href="#inicio" aria-current="page">Início</a></li>
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#festas">Decoração</a></li>
-        <li><a href="#festas">Festas</a></li>
+        <li><a href="festas.html">Festas</a></li>
         <li><a href="#contato">Regras</a></li>
         <li><a href="#galeria">Brinquedão</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -42,7 +42,7 @@
     <button class="hamburguer" type="button" aria-label="Abrir o menu" aria-expanded="false" aria-controls="menuCelular"><span></span><span></span><span></span></button>
   </div>
   <nav class="menu-celular" id="menuCelular" aria-label="Principal, celular" hidden>
-    <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#festas">Decoração</a><a href="#festas">Festas</a><a href="#contato">Regras</a><a href="#galeria">Brinquedão</a><a href="#contato">Contato</a>
+    <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#festas">Decoração</a><a href="festas.html">Festas</a><a href="#contato">Regras</a><a href="#galeria">Brinquedão</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -50,11 +50,13 @@
 
 <!-- ============================ HEROI ============================ -->
 <section class="heroi" aria-label="Boas-vindas">
-  <!-- a foto do salao (com o logo pintado na parede) ocupa o heroi inteiro; o texto fica por cima, na esquerda -->
+  <!-- a foto do salao ocupa o heroi inteiro; o bloco de texto fica por cima, na esquerda, como na referencia dela -->
   <div class="heroi-foto" role="img" aria-label="Salão do Dimi Festas, com parede estrelada, mesas coloridas, balões e brinquedão"></div>
   <!-- a barra do menu escorre sobre a foto numa onda, como na referencia -->
   <svg class="onda onda-topo" viewBox="0 0 1215 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1215v10c-60 8-150 20-260 16S760 6 640 10 420 30 300 22 100 6 0 14z" fill="#0B1B3A"/></svg>
   <div class="caixa heroi-dentro">
+    <p class="olho-claro">Bem-vindo ao</p>
+    <img class="heroi-logo" src="img/logo-heroi.png" alt="Dimi Festas, espaço para locação" width="1000" height="200">
     <p class="heroi-frase">Aqui, a diversão ganha<br>vida e cada <span class="amarelo">momento</span><br>vira uma grande <span class="rosa">festa!</span><svg class="coracao" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg></p>
     <ul class="heroi-selos">
       <li><span class="bola rosa-f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6.5 10v9h11v-9"/><path d="M10 19v-5h4v5"/></svg></span><span><b>Ambiente</b>seguro e completo</span></li>
@@ -63,6 +65,7 @@
     </ul>
     <a class="botao botao-heroi" href="#contato" data-whatsapp="Olá! Quero solicitar um orçamento no Dimi Festas.">Solicite seu orçamento <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
     <p class="heroi-manuscrito">Um espaço<br>feito para<br>sorrisos!<svg class="coracao" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg></p>
+    <svg class="confete confete-manuscrito" viewBox="0 0 60 80" preserveAspectRatio="none" aria-hidden="true"><path d="M2 20l7-6" stroke="#FFD400"/><path d="M1 44l8-2" stroke="#2EA7FF"/><path d="M3 66l7-7" stroke="#FF2D9B"/><path d="M51 12l6 9" stroke="#00C9A7"/><path d="M53 40l6 1" stroke="#FF2D9B"/><path d="M52 62l5 9" stroke="#FFD400"/></svg>
   </div>
   <svg class="onda onda-baixo" viewBox="0 0 1215 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 25C90 29 200 29 320 22S520 4 640 8 820 28 930 24 1110 8 1215 18V30H0z" fill="#fff"/></svg>
 </section>
@@ -121,7 +124,7 @@
       <h2>Nossos<br><span class="manuscrito">momentos</span></h2>
       <svg class="confete confete-galeria" viewBox="0 0 50 40" aria-hidden="true"><path d="M8 30 20 12" stroke="#FFD400"/><path d="M24 6l0 18" stroke="#00C9A7"/><path d="M30 30l14-12" stroke="#2EA7FF"/></svg>
       <p>Veja um pouco de como é cada detalhe do nosso espaço e das festas que já realizamos!</p>
-      <a class="botao botao-vazio" href="#contato" data-whatsapp="Olá! Quero ver mais fotos do Dimi Festas.">Ver mais fotos <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      <a class="botao botao-vazio" href="festas.html">Ver mais fotos <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
     </div>
     <ul class="galeria-fotos">
       <li><img src="img/galeria-1.jpg" alt="Decoração de festa com arco de balões rosa e verde e painel Mariana 15 anos" width="211" height="190" loading="lazy"></li>

@@ -110,31 +110,39 @@ h2 { margin: 0; }
 }
 /* o recuo de cima fica como padding (nao como margin da frase): margin colapsaria e empurraria a caixa inteira,
    levando a frase manuscrita absoluta para fora do heroi */
-.heroi-dentro { height: 100%; padding: 118px 0 0 36px; }
+/* posicoes da referencia dela (20/10): "Bem-vindo ao" logo abaixo da barra, logo em uma linha, frase, selos com
+   divisorias, botao; tudo encostado a esquerda */
+.heroi-dentro { height: 100%; padding: 42px 0 0 36px; }
+.heroi-dentro .olho-claro { margin-left: 4px; }
+.heroi-logo { display: block; width: 420px; height: auto; margin: 10px 0 0; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45)); }
 .heroi-frase {
-  margin: 0 0 0 4px;
-  font-family: var(--caveat); font-weight: 600; font-size: 30px; line-height: 1;
+  margin: 14px 0 0 4px;
+  font-family: var(--caveat); font-weight: 600; font-size: 31px; line-height: 1;
   transform: rotate(-3.5deg); transform-origin: left center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 .heroi-frase .amarelo { color: var(--amarelo); }
 .heroi-frase .rosa { color: var(--rosa); }
-.heroi-selos { display: flex; gap: 30px; margin: 20px 0 0 -2px; }
-.heroi-selos li { display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 1.25; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
+.heroi-selos { display: flex; gap: 0; margin: 26px 0 0 -2px; }
+.heroi-selos li { display: flex; align-items: center; gap: 10px; font-size: 12.5px; line-height: 1.25; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); padding: 0 18px; }
+.heroi-selos li:first-child { padding-left: 0; }
+.heroi-selos li + li { border-left: 1px solid rgba(255, 255, 255, 0.4); }
 .heroi-selos b { display: block; font-weight: 800; }
 .bola { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; flex: none; }
 .bola svg { width: 20px; height: 20px; }
 .rosa-f { background: var(--rosa); }
 .verde-f { background: var(--verde); }
 .amarelo-f { background: var(--amarelo); }
-.botao-heroi { margin-top: 20px; height: 36px; padding: 0 22px; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+.botao-heroi { margin-top: 26px; height: 40px; padding: 0 26px; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; }
 .heroi-manuscrito {
-  position: absolute; right: 40px; bottom: 56px; margin: 0;
-  font-family: var(--caveat); font-weight: 600; font-size: 26px; line-height: 1; text-align: center;
+  position: absolute; right: 48px; bottom: 50px; margin: 0;
+  font-family: var(--caveat); font-weight: 600; font-size: 28px; line-height: 1; text-align: center;
   transform: rotate(-9deg);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 .heroi-manuscrito .coracao { width: 16px; height: 16px; margin-left: 4px; }
+/* os confetes ficam so nas laterais da frase, sem cruzar as letras */
+.confete-manuscrito { right: -8px; bottom: 36px; width: 222px; height: 120px; stroke-width: 3.5; }
 
 /* =====================================================================
    SOBRE
@@ -219,6 +227,40 @@ h2 { margin: 0; }
 .manchas-pe { display: block; width: 100%; height: 62px; margin-top: 12px; }
 
 /* =====================================================================
+   PAGINA FESTAS (fotos de exemplo)
+   ===================================================================== */
+.festas-abertura { position: relative; background: var(--marinho); color: #fff; padding: 44px 0 60px; overflow: hidden; }
+.festas-abertura .caixa { padding: 0 60px; }
+.festas-abertura h1 { margin: 6px 0 0; font-family: var(--baloo); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.01em; }
+.festas-abertura h1 .manuscrito { color: var(--amarelo); font-size: 46px; }
+.festas-abertura p { margin: 14px 0 0; max-width: 54ch; font-size: 15px; color: rgba(255, 255, 255, 0.85); }
+.festas-abertura .confete { right: 60px; top: 30px; width: 90px; height: 90px; }
+.festas-abertura .nuvem { fill: rgba(255, 255, 255, 0.08); }
+.festas-galeria { padding: 36px 0 48px; background: #fff; position: relative; overflow: hidden; }
+.festas-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 180px; grid-auto-flow: dense; gap: 12px; padding: 0 57px; list-style: none; margin: 0; }
+.festas-grade li { border-radius: 12px; overflow: hidden; }
+.festas-grade li.larga { grid-column: span 2; }
+.festas-grade li.alta { grid-row: span 2; }
+.festas-grade li.larga.alta { grid-column: span 2; grid-row: span 2; }
+.festas-grade li.inteira { grid-column: span 4; grid-row: span 2; }
+.festas-grade button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: var(--marinho); cursor: zoom-in; }
+.festas-grade img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.festas-grade button:hover img { transform: scale(1.04); }
+.festas-chamada { text-align: center; padding: 10px 20px 0; }
+.festas-chamada .manuscrito { color: var(--rosa); font-size: 30px; display: block; margin-bottom: 14px; }
+/* o visualizador: foto grande por cima de tudo */
+.visor { position: fixed; inset: 0; z-index: 100; background: rgba(11, 27, 58, 0.94); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.visor img { max-width: 100%; max-height: calc(100vh - 40px); border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.visor-fechar, .visor-seta { position: absolute; border: 0; background: rgba(255, 255, 255, 0.14); color: #fff; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; }
+.visor-fechar { top: 16px; right: 16px; }
+.visor-seta { top: 50%; transform: translateY(-50%); }
+.visor-seta.esq { left: 16px; }
+.visor-seta.dir { right: 16px; }
+.visor-fechar svg, .visor-seta svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.visor-legenda { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); color: rgba(255, 255, 255, 0.8); font-size: 13px; }
+body.visor-aberto { overflow: hidden; }
+
+/* =====================================================================
    TELAS MENORES
    ===================================================================== */
 @media (max-width: 1214px) {
@@ -246,10 +288,14 @@ h2 { margin: 0; }
   .heroi-foto { position: static; aspect-ratio: 2073 / 758; background-position: center; }
   .heroi-foto::after { display: none; }
   .heroi-dentro { padding: 26px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .heroi-frase { margin: 0; transform: none; }
-  .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 24px; margin: 22px 0 0; }
-  .heroi-selos li { text-align: left; }
+  .heroi-logo { width: min(100%, 420px); margin-top: 8px; }
+  .heroi-frase { margin: 14px 0 0; transform: none; }
+  .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 0; margin: 22px 0 0; }
+  .heroi-selos li { text-align: left; padding: 0 14px; }
+  .heroi-selos li:first-child { padding-left: 14px; }
+  .heroi-selos li + li { border-left: 0; }
   .heroi-manuscrito { position: static; margin-top: 26px; transform: rotate(-4deg); }
+  .confete-manuscrito { display: none; }
 
   .sobre { padding: 30px 0 30px; }
   .sobre-dentro { grid-template-columns: 1fr; gap: 26px; }
@@ -265,6 +311,13 @@ h2 { margin: 0; }
   .festas-lista { grid-template-columns: repeat(3, 1fr); gap: 26px 0; padding: 0 20px; }
   .festas-lista li:nth-child(4)::before { display: none; }
   .confete-esq, .confete-dir { display: none; }
+
+  .festas-abertura .caixa { padding: 0 20px; }
+  .festas-abertura h1 { font-size: 32px; }
+  .festas-abertura h1 .manuscrito { font-size: 38px; }
+  .festas-abertura .confete { display: none; }
+  .festas-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; padding: 0 20px; gap: 10px; }
+  .festas-grade li.larga, .festas-grade li.inteira { grid-column: span 2; }
 
   .galeria { padding: 50px 0 24px; }
   .galeria-dentro { grid-template-columns: 1fr; gap: 22px; }

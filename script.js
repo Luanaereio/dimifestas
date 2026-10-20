@@ -28,10 +28,10 @@
     });
   }
 
-  // o item do menu acompanha a secao visivel
+  // o item do menu acompanha a secao visivel (so na home, onde as secoes existem)
   var links = Array.prototype.slice.call(document.querySelectorAll('.menu a'));
   var secoes = ['inicio', 'sobre', 'festas', 'galeria', 'contato'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
-  if ('IntersectionObserver' in window && links.length) {
+  if ('IntersectionObserver' in window && links.length && secoes.length >= 3) {
     var atual = null;
     var obs = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) { if (e.isIntersecting) atual = e.target.id; });
@@ -42,5 +42,42 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     secoes.forEach(function (s) { obs.observe(s); });
+  }
+
+  // o visualizador da pagina Festas: toque na foto abre grande, setas e Esc navegam e fecham
+  var galeria = document.querySelector('[data-galeria]');
+  if (galeria) {
+    var fotos = Array.prototype.map.call(galeria.querySelectorAll('[data-foto]'), function (b) { return { src: b.getAttribute('data-foto'), alt: b.querySelector('img').alt }; });
+    var atual = 0, visor = null;
+    function montar() {
+      visor = document.createElement('div'); visor.className = 'visor'; visor.setAttribute('role', 'dialog'); visor.setAttribute('aria-modal', 'true'); visor.setAttribute('aria-label', 'Foto ampliada');
+      visor.innerHTML = '<button class="visor-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '<button class="visor-seta esq" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+        '<img alt="">' +
+        '<button class="visor-seta dir" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>' +
+        '<p class="visor-legenda"></p>';
+      document.body.appendChild(visor);
+      visor.querySelector('.visor-fechar').addEventListener('click', fechar);
+      visor.querySelector('.esq').addEventListener('click', function () { ir(atual - 1); });
+      visor.querySelector('.dir').addEventListener('click', function () { ir(atual + 1); });
+      visor.addEventListener('click', function (ev) { if (ev.target === visor) fechar(); });
+    }
+    function ir(i) {
+      atual = (i + fotos.length) % fotos.length;
+      var img = visor.querySelector('img'); img.src = fotos[atual].src; img.alt = fotos[atual].alt;
+      visor.querySelector('.visor-legenda').textContent = (atual + 1) + ' / ' + fotos.length;
+    }
+    function abrir(i) { if (!visor) montar(); visor.hidden = false; document.body.classList.add('visor-aberto'); ir(i); visor.querySelector('.visor-fechar').focus(); }
+    function fechar() { if (visor) { visor.hidden = true; } document.body.classList.remove('visor-aberto'); }
+    galeria.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-foto]'); if (!b) return;
+      abrir(Array.prototype.indexOf.call(galeria.querySelectorAll('[data-foto]'), b));
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (!visor || visor.hidden) return;
+      if (ev.key === 'Escape') fechar();
+      if (ev.key === 'ArrowLeft') ir(atual - 1);
+      if (ev.key === 'ArrowRight') ir(atual + 1);
+    });
   }
 })();
