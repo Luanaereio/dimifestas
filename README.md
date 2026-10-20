@@ -6,12 +6,12 @@ largura de desenho de 1215 px e adaptacao para celular.
 
 ## Provisorios a trocar
 
-- **Fotos e logos em `img/`** foram recortados do mockup e estao em baixa resolucao. Trocar pelos originais
-  mantendo os nomes: `logo-cabecalho.png` (216x92), `logo-heroi.png` (400x76, fundo transparente),
-  `logo-rodape.png` (216x92), `heroi.jpg` (885x345 ou maior na mesma proporcao), `sobre-1.jpg` (376x236),
-  `sobre-2.jpg` e `sobre-3.jpg` (270x116), `galeria-1.jpg` a `galeria-4.jpg` (cerca de 205x190).
-- **Frase manuscrita do heroi** ("Um espaco feito para sorrisos!"): a foto provisoria ja traz a frase desenhada,
-  por isso a versao em HTML esta com a classe `escondido-provisorio`. Quando a foto original entrar, tirar a classe.
+- **Foto do heroi** (`img/heroi.jpg`, 1800x658) e a original, com o logo pintado na parede; por isso o heroi nao
+  tem logo em imagem separada.
+- **Logos e demais fotos em `img/`** foram recortados do mockup e estao em baixa resolucao. Trocar pelos originais
+  mantendo os nomes: `logo-cabecalho.png` (216x92, fundo transparente), `logo-rodape.png` (216x92),
+  `sobre-1.jpg` (376x236), `sobre-2.jpg` e `sobre-3.jpg` (270x116), `galeria-1.jpg` a `galeria-4.jpg`
+  (cerca de 205x190). `logo-heroi.png` nao e mais usado.
 - **WhatsApp:** preencher `WHATSAPP` no comeco de `script.js` com DDI + DDD + numero (so digitos). Enquanto
   estiver vazio, os botoes rolam ate o contato.
 - **Instagram e Facebook:** trocar os `href="#"` marcados com `data-pendente` no rodape.

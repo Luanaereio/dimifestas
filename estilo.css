@@ -92,32 +92,31 @@ h2 { margin: 0; }
 /* =====================================================================
    HEROI
    ===================================================================== */
-.heroi { position: relative; height: 345px; overflow: hidden; background: var(--marinho); color: #fff; }
-/* a foto comeca a 330 px da borda esquerda da caixa de 1215 e vai ate a borda direita da tela */
+/* a foto do salao (2073x758, com o logo pintado na parede a esquerda) preenche o heroi; na largura de desenho
+   (1215) ela escala para 1215x444 e o heroi mostra quase tudo. O texto senta sobre a parede escura, abaixo do
+   logo da foto, com um degrade no pe para a leitura em cima das mesas. */
+.heroi { position: relative; height: 430px; overflow: hidden; background: var(--marinho); color: #fff; }
 .heroi-foto {
-  position: absolute; top: 0; bottom: 0; right: 0;
-  left: calc(50% - var(--largura) / 2 + 330px);
-  background: url("img/heroi.jpg") left center / cover no-repeat;
+  position: absolute; inset: 0;
+  background: url("img/heroi.jpg") center top / cover no-repeat;
 }
-.heroi-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11, 27, 58, 0.55), rgba(11, 27, 58, 0) 32%); }
-/* o painel escuro com a borda rasgada, como papel */
-.heroi-painel {
-  position: absolute; top: 0; bottom: 0; left: 0;
-  width: calc(50% - var(--largura) / 2 + 470px);
-  background: var(--marinho);
-  clip-path: polygon(0 0, 85% 0, 87.5% 4%, 84.5% 9%, 88.5% 14%, 85.5% 19%, 89.5% 24%, 86.5% 30%, 90.5% 35%, 87.5% 41%, 91.5% 46%, 88.5% 52%, 92.5% 57%, 89.5% 63%, 93.5% 68%, 90.5% 74%, 94.5% 79%, 92.5% 85%, 96.5% 90%, 95% 95%, 100% 100%, 0 100%);
+.heroi-foto::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 27, 58, 0) 42%, rgba(11, 27, 58, 0.78) 100%),
+    linear-gradient(90deg, rgba(11, 27, 58, 0.32), rgba(11, 27, 58, 0) 48%);
 }
 .heroi-dentro { height: 100%; padding: 28px 0 0 60px; }
-.heroi-logo { display: block; width: 400px; height: auto; margin: 8px 0 0 -8px; }
 .heroi-frase {
-  margin: 10px 0 0 4px;
+  margin: 158px 0 0 4px;
   font-family: var(--caveat); font-weight: 600; font-size: 30px; line-height: 1;
   transform: rotate(-3.5deg); transform-origin: left center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 .heroi-frase .amarelo { color: var(--amarelo); }
 .heroi-frase .rosa { color: var(--rosa); }
 .heroi-selos { display: flex; gap: 30px; margin: 20px 0 0 -2px; }
-.heroi-selos li { display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 1.25; }
+.heroi-selos li { display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 1.25; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
 .heroi-selos b { display: block; font-weight: 800; }
 .bola { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; color: #fff; flex: none; }
 .bola svg { width: 20px; height: 20px; }
@@ -132,8 +131,6 @@ h2 { margin: 0; }
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 .heroi-manuscrito .coracao { width: 16px; height: 16px; margin-left: 4px; }
-/* enquanto a foto do heroi for a recortada do mockup (que ja traz a frase desenhada) */
-.escondido-provisorio { visibility: hidden; }
 
 /* =====================================================================
    SOBRE
@@ -223,8 +220,6 @@ h2 { margin: 0; }
   .caixa { padding-left: 20px; padding-right: 20px; }
   .topo-dentro { padding: 0 20px; }
   .menu ul { gap: 24px; margin-left: 0; }
-  .heroi-foto { left: 36%; }
-  .heroi-painel { width: 42%; }
   .sobre-dentro { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 30px; padding-left: 20px; }
   .sobre-fotos { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: 1fr 1fr; }
   .galeria-dentro { grid-template-columns: 230px minmax(0, 1fr); padding: 0 20px; gap: 24px; }
@@ -241,13 +236,12 @@ h2 { margin: 0; }
   .menu-celular[hidden] { display: none; }
   .menu-celular a { padding: 12px 6px; font-weight: 700; font-size: 16px; color: var(--marinho); text-decoration: none; border-bottom: 1px solid rgba(11, 27, 58, 0.06); }
 
+  /* no celular a foto vira uma faixa inteira no alto (com o logo da parede) e o texto desce para o fundo marinho */
   .heroi { height: auto; }
-  .heroi-foto { left: 0; }
-  .heroi-foto::after { background: linear-gradient(180deg, rgba(11, 27, 58, 0.86), rgba(11, 27, 58, 0.72)); }
-  .heroi-painel { display: none; }
-  .heroi-dentro { padding: 40px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .heroi-logo { width: min(100%, 400px); margin: 10px 0 0; }
-  .heroi-frase { margin: 16px 0 0; transform: none; }
+  .heroi-foto { position: static; aspect-ratio: 2073 / 758; background-position: center; }
+  .heroi-foto::after { display: none; }
+  .heroi-dentro { padding: 26px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .heroi-frase { margin: 12px 0 0; transform: none; }
   .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 24px; margin: 22px 0 0; }
   .heroi-selos li { text-align: left; }
   .heroi-manuscrito { position: static; margin-top: 26px; transform: rotate(-4deg); }
