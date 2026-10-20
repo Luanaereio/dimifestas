@@ -6,9 +6,9 @@ largura de desenho de 1215 px e adaptacao para celular.
 
 ## Provisorios a trocar
 
-- **Foto do heroi** (`img/heroi-estrelas.jpg`, 1800x658) e a original do salao com a parede estrelada; o logo do
-  heroi e `img/logo-heroi.png` (uma linha, montado a partir de `img/logo-original.jpg`). Ao trocar a foto, use um
-  nome NOVO de arquivo, senao o navegador mostra a versao antiga guardada em cache.
+- **Foto do heroi** (`img/heroi-estrelas.jpg`, 1800x658) e a original do salao com a parede estrelada; sobre ela
+  ficam so a frase, os selos, o botao e a frase manuscrita (sem logo). Ao trocar a foto, use um nome NOVO de
+  arquivo, senao o navegador mostra a versao antiga guardada em cache.
 - **Logos e demais fotos em `img/`** foram recortados do mockup e estao em baixa resolucao. Trocar pelos originais
   mantendo os nomes: `logo-cabecalho.png` (216x92, fundo transparente), `logo-rodape.png` (216x92),
   `sobre-1.jpg` (376x236), `sobre-2.jpg` e `sobre-3.jpg` (270x116), `galeria-1.jpg` a `galeria-4.jpg`

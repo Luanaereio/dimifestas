@@ -110,13 +110,10 @@ h2 { margin: 0; }
 }
 /* o recuo de cima fica como padding (nao como margin da frase): margin colapsaria e empurraria a caixa inteira,
    levando a frase manuscrita absoluta para fora do heroi */
-/* posicoes da referencia dela (20/10): "Bem-vindo ao" logo abaixo da barra, logo em uma linha, frase, selos com
-   divisorias, botao; tudo encostado a esquerda */
-.heroi-dentro { height: 100%; padding: 42px 0 0 36px; }
-.heroi-dentro .olho-claro { margin-left: 4px; }
-.heroi-logo { display: block; width: 420px; height: auto; margin: 10px 0 0; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45)); }
+/* so a frase, os selos com divisorias e o botao, encostados a esquerda (sem "Bem-vindo ao" nem logo: ela tirou em 20/10) */
+.heroi-dentro { height: 100%; padding: 128px 0 0 36px; }
 .heroi-frase {
-  margin: 14px 0 0 4px;
+  margin: 0 0 0 4px;
   font-family: var(--caveat); font-weight: 600; font-size: 31px; line-height: 1;
   transform: rotate(-3.5deg); transform-origin: left center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
@@ -332,8 +329,7 @@ body.visor-aberto { overflow: hidden; }
   .heroi-foto { position: static; aspect-ratio: 2073 / 758; background-position: center; }
   .heroi-foto::after { display: none; }
   .heroi-dentro { padding: 26px 20px 70px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .heroi-logo { width: min(100%, 420px); margin-top: 8px; }
-  .heroi-frase { margin: 14px 0 0; transform: none; }
+  .heroi-frase { margin: 0; transform: none; }
   .heroi-selos { flex-wrap: wrap; justify-content: center; gap: 14px 0; margin: 22px 0 0; }
   .heroi-selos li { text-align: left; padding: 0 14px; }
   .heroi-selos li:first-child { padding-left: 14px; }
