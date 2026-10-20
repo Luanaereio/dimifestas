@@ -26,8 +26,8 @@
         <li><a href="index.html#sobre">Sobre</a></li>
         <li><a href="index.html#festas">Decoração</a></li>
         <li><a href="festas.html" aria-current="page">Festas</a></li>
-        <li><a href="index.html#contato">Regras</a></li>
-        <li><a href="index.html#galeria">Brinquedão</a></li>
+        <li><a href="brinquedao.html#regras">Regras</a></li>
+        <li><a href="brinquedao.html">Brinquedão</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -38,7 +38,7 @@
     <button class="hamburguer" type="button" aria-label="Abrir o menu" aria-expanded="false" aria-controls="menuCelular"><span></span><span></span><span></span></button>
   </div>
   <nav class="menu-celular" id="menuCelular" aria-label="Principal, celular" hidden>
-    <a href="index.html">Início</a><a href="index.html#sobre">Sobre</a><a href="index.html#festas">Decoração</a><a href="festas.html">Festas</a><a href="index.html#contato">Regras</a><a href="index.html#galeria">Brinquedão</a><a href="#contato">Contato</a>
+    <a href="index.html">Início</a><a href="index.html#sobre">Sobre</a><a href="index.html#festas">Decoração</a><a href="festas.html">Festas</a><a href="brinquedao.html#regras">Regras</a><a href="brinquedao.html">Brinquedão</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -67,26 +67,40 @@
   </div>
 </section>
 
-<!-- ============================ DECORACOES: trilho que desliza, uma foto grande de cada vez ============================ -->
+<!-- ============================ DECORACOES: vitrine, um tema em destaque por vez ============================ -->
 <section class="pf-secao" aria-labelledby="tituloDecor">
-  <div class="caixa pf-caixa pf-cabeca">
-    <div>
-      <p class="olho">Decorações</p>
-      <h2 id="tituloDecor">Um tema, <span class="manuscrito">mil detalhes</span></h2>
-    </div>
-    <div class="pf-controles" data-trilho-controles>
-      <span class="pf-contador"><b data-trilho-n>01</b> / 05</span>
-      <button class="pf-seta" type="button" data-trilho-seta="esq" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="pf-seta" type="button" data-trilho-seta="dir" aria-label="Próxima foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="caixa pf-caixa">
+    <p class="olho">Decorações</p>
+    <h2 id="tituloDecor">Um tema, <span class="manuscrito">mil detalhes</span></h2>
+  </div>
+  <div class="caixa pf-caixa">
+    <div class="vitrine" data-vitrine>
+      <figure class="vitrine-palco">
+        <button class="vitrine-grande" type="button" data-foto="img/festas-6.jpg" data-vitrine-grande aria-label="Ver a foto em tela cheia">
+          <img src="img/festas-6.jpg" alt="Decoração de 15 anos com arco de balões rosa e verde e painel com o nome Mariana" width="700" height="949">
+        </button>
+        <span class="vitrine-numero" aria-hidden="true"><b data-vitrine-n>01</b><i>/ 05</i></span>
+        <span class="vitrine-mancha vitrine-mancha-a" aria-hidden="true"></span>
+        <span class="vitrine-mancha vitrine-mancha-b" aria-hidden="true"></span>
+      </figure>
+      <div class="vitrine-lado">
+        <p class="olho">Tema em destaque</p>
+        <h3 class="vitrine-titulo" data-vitrine-titulo aria-live="polite">15 anos</h3>
+        <p class="vitrine-texto" data-vitrine-texto>Rosa, verde e um painel com o nome dela. Arco de balões, mesa de doces e o número iluminado para a foto da noite.</p>
+        <ol class="vitrine-indice" aria-label="Temas">
+          <li><button type="button" data-vitrine-item data-foto="img/festas-6.jpg" data-titulo="15 anos" data-texto="Rosa, verde e um painel com o nome dela. Arco de balões, mesa de doces e o número iluminado para a foto da noite." data-alt="Decoração de 15 anos com arco de balões rosa e verde e painel com o nome Mariana" aria-current="true"><img src="img/festas-6.jpg" alt="" width="700" height="949" loading="lazy"><span><b>15 anos</b><small>rosa, verde e um painel com o nome dela</small></span></button></li>
+          <li><button type="button" data-vitrine-item data-foto="img/festas-7.jpg" data-titulo="Chá de bebê" data-texto="Azul do céu, estrelas penduradas e um ursinho de guarda ao lado do número um. Delicado, sem perder a alegria." data-alt="Decoração de chá de bebê em tons de azul com ursinho e estrelas"><img src="img/festas-7.jpg" alt="" width="700" height="954" loading="lazy"><span><b>Chá de bebê</b><small>azul, estrelas e um ursinho de guarda</small></span></button></li>
+          <li><button type="button" data-vitrine-item data-foto="img/festas-9.jpg" data-titulo="Pokémon" data-texto="Pikachu de boas-vindas, pokébolas na mesa e os personagens espalhados pelos doces. A criança escolhe o tema, a gente monta o mundo." data-alt="Mesa de festa Pokémon com Pikachu, pokébolas e balões coloridos"><img src="img/festas-9.jpg" alt="" width="700" height="954" loading="lazy"><span><b>Pokémon</b><small>Pikachu de boas-vindas e pokébolas na mesa</small></span></button></li>
+          <li><button type="button" data-vitrine-item data-foto="img/festas-3.jpg" data-titulo="Confraternização" data-texto="Mesas coloridas para a turma inteira, arranjos de balões no alto e o brinquedão à disposição. Serve para a escola, a empresa ou a família grande." data-alt="Salão com mesas vermelhas e amarelas, arranjos de balões e brinquedão ao fundo"><img src="img/festas-3.jpg" alt="" width="1200" height="772" loading="lazy"><span><b>Confraternização</b><small>mesas coloridas para a turma inteira</small></span></button></li>
+          <li><button type="button" data-vitrine-item data-foto="img/festas-2.jpg" data-titulo="Noite estrelada" data-texto="A parede de estrelas que muda com a luz, a mesa de doces iluminada ao fundo e o salão inteiro pronto para a festa." data-alt="Salão com parede estrelada, mesa de doces ao fundo e Pikachu entre os balões"><img src="img/festas-2.jpg" alt="" width="1400" height="511" loading="lazy"><span><b>Noite estrelada</b><small>a parede de estrelas que muda com a luz</small></span></button></li>
+        </ol>
+        <div class="pf-controles">
+          <button class="pf-seta" type="button" data-vitrine-seta="esq" aria-label="Tema anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="pf-seta" type="button" data-vitrine-seta="dir" aria-label="Próximo tema"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
     </div>
   </div>
-  <ul class="pf-trilho" data-trilho aria-label="Decorações por tema">
-    <li><button type="button" data-foto="img/festas-6.jpg"><img src="img/festas-6.jpg" alt="Decoração de 15 anos com arco de balões rosa e verde e painel com o nome Mariana" width="700" height="949" loading="lazy"></button><p><b>15 anos</b><span>rosa, verde e um painel com o nome dela</span></p></li>
-    <li><button type="button" data-foto="img/festas-7.jpg"><img src="img/festas-7.jpg" alt="Decoração de chá de bebê em tons de azul com ursinho e estrelas" width="700" height="954" loading="lazy"></button><p><b>Chá de bebê</b><span>azul, estrelas e um ursinho de guarda</span></p></li>
-    <li><button type="button" data-foto="img/festas-9.jpg"><img src="img/festas-9.jpg" alt="Mesa de festa Pokémon com Pikachu, pokébolas e balões coloridos" width="700" height="954" loading="lazy"></button><p><b>Pokémon</b><span>Pikachu de boas-vindas e pokébolas na mesa</span></p></li>
-    <li><button type="button" data-foto="img/festas-3.jpg"><img src="img/festas-3.jpg" alt="Salão com mesas vermelhas e amarelas, arranjos de balões e brinquedão ao fundo" width="1200" height="772" loading="lazy"></button><p><b>Confraternização</b><span>mesas coloridas para a turma inteira</span></p></li>
-    <li><button type="button" data-foto="img/festas-2.jpg"><img src="img/festas-2.jpg" alt="Salão com parede estrelada, mesa de doces ao fundo e Pikachu entre os balões" width="1400" height="511" loading="lazy"></button><p><b>Noite estrelada</b><span>a parede de estrelas que muda com a luz</span></p></li>
-  </ul>
 </section>
 
 <!-- ============================ BRINQUEDAO: texto e uma foto alta, lado a lado ============================ -->
@@ -96,7 +110,7 @@
       <p class="olho">Brinquedão</p>
       <h2 id="tituloBrinq">Para eles, <span class="manuscrito">o melhor lugar da festa</span></h2>
       <p>Piscina de bolinhas, escorregadores, redes e túneis, em um espaço fechado e seguro, com a equipe por perto o tempo todo. Enquanto as crianças brincam, os adultos aproveitam a festa.</p>
-      <a class="botao botao-vazio" href="index.html#festas">Ver o que fazemos <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      <a class="botao botao-vazio" href="brinquedao.html">Conhecer o brinquedão <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
     </div>
     <figure class="pf-quadro pf-alto">
       <button type="button" data-foto="img/festas-8.jpg"><img src="img/festas-8.jpg" alt="Brinquedão colorido com escorregadores e piscina de bolinhas" width="700" height="949" loading="lazy"></button>

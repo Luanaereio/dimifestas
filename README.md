@@ -16,8 +16,10 @@ largura de desenho de 1215 px e adaptacao para celular.
 - **WhatsApp:** preencher `WHATSAPP` no comeco de `script.js` com DDI + DDD + numero (so digitos). Enquanto
   estiver vazio, os botoes rolam ate o contato.
 - **Instagram e Facebook:** trocar os `href="#"` marcados com `data-pendente` no rodape.
-- **Menu:** Decoracao e Festas levam a faixa de servicos, Regras e Contato ao rodape, Brinquedao a galeria.
-  Se virarem paginas proprias, trocar os `href`.
+- **Menu:** Decoracao leva a faixa de servicos da home; Festas abre `festas.html` (galeria editorial com a
+  vitrine de temas); Brinquedao abre `brinquedao.html`; Regras abre `brinquedao.html#regras`; Contato vai ao rodape.
+- **Textos do brinquedao e das regras** (`brinquedao.html`) sao uma proposta: confirmar com o cliente o que o
+  brinquedao tem de fato e quais sao as regras da casa (meias, idade, acompanhamento, comida fora).
 
 ## Publicar
 
