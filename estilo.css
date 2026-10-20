@@ -64,6 +64,7 @@ h2 { margin: 0; }
 .onda { position: absolute; left: 0; width: 100%; height: 30px; display: block; pointer-events: none; }
 .onda-baixo { bottom: -1px; }
 .onda-cima { top: -29px; }
+.onda-topo { top: -1px; z-index: 1; }
 .nuvem { position: absolute; fill: var(--nuvem); width: 120px; height: 60px; pointer-events: none; }
 .mancha { position: absolute; border-radius: 50%; pointer-events: none; }
 .confete { position: absolute; fill: none; stroke-width: 4; stroke-linecap: round; pointer-events: none; }
@@ -71,19 +72,20 @@ h2 { margin: 0; }
 /* =====================================================================
    CABECALHO
    ===================================================================== */
-.topo { position: sticky; top: 0; z-index: 30; background: #fff; box-shadow: 0 1px 0 rgba(11, 27, 58, 0.06); }
+/* barra marinho, como na referencia dela de 20/10: logo claro, itens brancos, "Inicio" em rosa com risco embaixo */
+.topo { position: sticky; top: 0; z-index: 30; background: var(--marinho); color: #fff; }
 .topo-dentro { height: 100px; display: flex; align-items: center; padding: 0 40px 0 38px; gap: 20px; }
 .logo { flex: none; line-height: 0; }
 .logo img { width: 186px; height: auto; display: block; }
 .menu { flex: 1; display: flex; justify-content: flex-start; padding-left: 46px; }
 .menu ul { display: flex; gap: 36px; }
-.menu a { position: relative; display: block; padding: 6px 0; font-size: 15px; font-weight: 600; color: var(--marinho); text-decoration: none; transition: color 0.15s; }
+.menu a { position: relative; display: block; padding: 6px 0; font-size: 15px; font-weight: 600; color: #fff; text-decoration: none; transition: color 0.15s; }
 .menu a:hover { color: var(--rosa); }
 .menu a[aria-current] { color: var(--rosa); font-weight: 700; }
 .menu a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 3px; border-radius: 3px; background: var(--rosa); }
 .botao-topo { padding: 0 26px 0 12px; }
 .hamburguer { display: none; width: 44px; height: 44px; border: 0; background: transparent; padding: 10px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
-.hamburguer span { display: block; height: 3px; border-radius: 3px; background: var(--marinho); transition: transform 0.2s, opacity 0.2s; }
+.hamburguer span { display: block; height: 3px; border-radius: 3px; background: #fff; transition: transform 0.2s, opacity 0.2s; }
 .hamburguer[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburguer[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .hamburguer[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -108,7 +110,7 @@ h2 { margin: 0; }
 }
 /* o recuo de cima fica como padding (nao como margin da frase): margin colapsaria e empurraria a caixa inteira,
    levando a frase manuscrita absoluta para fora do heroi */
-.heroi-dentro { height: 100%; padding: 236px 0 0 36px; }
+.heroi-dentro { height: 100%; padding: 118px 0 0 36px; }
 .heroi-frase {
   margin: 0 0 0 4px;
   font-family: var(--caveat); font-weight: 600; font-size: 30px; line-height: 1;
@@ -127,7 +129,7 @@ h2 { margin: 0; }
 .amarelo-f { background: var(--amarelo); }
 .botao-heroi { margin-top: 20px; height: 36px; padding: 0 22px; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
 .heroi-manuscrito {
-  position: absolute; right: 40px; bottom: 10px; margin: 0;
+  position: absolute; right: 40px; bottom: 56px; margin: 0;
   font-family: var(--caveat); font-weight: 600; font-size: 26px; line-height: 1; text-align: center;
   transform: rotate(-9deg);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -235,9 +237,9 @@ h2 { margin: 0; }
   .hamburguer { display: flex; margin-left: auto; }
   .topo-dentro { height: 76px; }
   .logo img { width: 160px; }
-  .menu-celular { display: grid; gap: 2px; padding: 6px 20px 18px; background: #fff; border-top: 1px solid rgba(11, 27, 58, 0.08); }
+  .menu-celular { display: grid; gap: 2px; padding: 6px 20px 18px; background: var(--marinho); border-top: 1px solid rgba(255, 255, 255, 0.12); }
   .menu-celular[hidden] { display: none; }
-  .menu-celular a { padding: 12px 6px; font-weight: 700; font-size: 16px; color: var(--marinho); text-decoration: none; border-bottom: 1px solid rgba(11, 27, 58, 0.06); }
+  .menu-celular a { padding: 12px 6px; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 
   /* no celular a foto vira uma faixa inteira no alto (com o logo da parede) e o texto desce para o fundo marinho */
   .heroi { height: auto; }
