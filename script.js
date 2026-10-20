@@ -44,6 +44,25 @@
     secoes.forEach(function (s) { obs.observe(s); });
   }
 
+  // o trilho da pagina Festas: setas rolam um cartao por vez e o contador acompanha o cartao visivel
+  var trilho = document.querySelector('[data-trilho]');
+  if (trilho) {
+    var cartoes = trilho.children;
+    var contador = document.querySelector('[data-trilho-n]');
+    function passo() { return cartoes.length > 1 ? cartoes[1].offsetLeft - cartoes[0].offsetLeft : trilho.clientWidth; }
+    function indiceVisivel() { var i = Math.round(trilho.scrollLeft / passo()); return Math.max(0, Math.min(cartoes.length - 1, i)); }
+    function atualizarContador() { if (contador) contador.textContent = (indiceVisivel() + 1 < 10 ? '0' : '') + (indiceVisivel() + 1); }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-trilho-seta]'), function (b) {
+      b.addEventListener('click', function () {
+        var dir = b.getAttribute('data-trilho-seta') === 'dir' ? 1 : -1;
+        var alvo = Math.max(0, Math.min(cartoes.length - 1, indiceVisivel() + dir));
+        trilho.scrollTo({ left: cartoes[alvo].offsetLeft - cartoes[0].offsetLeft, behavior: 'smooth' });
+      });
+    });
+    trilho.addEventListener('scroll', atualizarContador, { passive: true });
+    atualizarContador();
+  }
+
   // o visualizador da pagina Festas: toque na foto abre grande, setas e Esc navegam e fecham
   var galeria = document.querySelector('[data-galeria]');
   if (galeria) {

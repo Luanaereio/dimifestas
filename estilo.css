@@ -100,7 +100,7 @@ h2 { margin: 0; }
 .heroi { position: relative; height: 480px; overflow: hidden; background: var(--marinho); color: #fff; }
 .heroi-foto {
   position: absolute; inset: 0;
-  background: url("img/heroi.jpg") center top / cover no-repeat;
+  background: url("img/heroi-estrelas.jpg") center top / cover no-repeat;
 }
 .heroi-foto::after {
   content: ""; position: absolute; inset: 0;
@@ -227,27 +227,71 @@ h2 { margin: 0; }
 .manchas-pe { display: block; width: 100%; height: 62px; margin-top: 12px; }
 
 /* =====================================================================
-   PAGINA FESTAS (fotos de exemplo)
+   PAGINA FESTAS: editorial, com ar. Fundo branco, uma foto grande por vez,
+   legendas que flutuam, um trilho que desliza. Nada de nuvem ou mancha aqui.
    ===================================================================== */
-.festas-abertura { position: relative; background: var(--marinho); color: #fff; padding: 44px 0 60px; overflow: hidden; }
-.festas-abertura .caixa { padding: 0 60px; }
-.festas-abertura h1 { margin: 6px 0 0; font-family: var(--baloo); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.01em; }
-.festas-abertura h1 .manuscrito { color: var(--amarelo); font-size: 46px; }
-.festas-abertura p { margin: 14px 0 0; max-width: 54ch; font-size: 15px; color: rgba(255, 255, 255, 0.85); }
-.festas-abertura .confete { right: 60px; top: 30px; width: 90px; height: 90px; }
-.festas-abertura .nuvem { fill: rgba(255, 255, 255, 0.08); }
-.festas-galeria { padding: 36px 0 48px; background: #fff; position: relative; overflow: hidden; }
-.festas-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 180px; grid-auto-flow: dense; gap: 12px; padding: 0 57px; list-style: none; margin: 0; }
-.festas-grade li { border-radius: 12px; overflow: hidden; }
-.festas-grade li.larga { grid-column: span 2; }
-.festas-grade li.alta { grid-row: span 2; }
-.festas-grade li.larga.alta { grid-column: span 2; grid-row: span 2; }
-.festas-grade li.inteira { grid-column: span 4; grid-row: span 2; }
-.festas-grade button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: var(--marinho); cursor: zoom-in; }
-.festas-grade img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-.festas-grade button:hover img { transform: scale(1.04); }
-.festas-chamada { text-align: center; padding: 10px 20px 0; }
-.festas-chamada .manuscrito { color: var(--rosa); font-size: 30px; display: block; margin-bottom: 14px; }
+.pf { background: #fff; color: var(--texto); }
+.pf-caixa { padding: 0 60px; }
+.pf-abertura { padding: 72px 0 40px; }
+.pf-abertura h1 { margin: 10px 0 0; font-family: var(--baloo); font-weight: 800; font-size: 60px; line-height: 0.98; letter-spacing: -0.02em; color: var(--marinho); }
+.pf-abertura h1 .manuscrito { font-size: 68px; line-height: 0.9; }
+.pf-lede { margin: 22px 0 0; max-width: 54ch; font-size: 16px; line-height: 1.6; color: #4A5468; }
+.pf-secao { padding: 72px 0 0; }
+.pf-secao h2 { margin: 8px 0 0; font-family: var(--baloo); font-weight: 800; font-size: 36px; line-height: 1; letter-spacing: -0.02em; color: var(--marinho); }
+.pf-secao h2 .manuscrito { font-size: 42px; line-height: 0.9; }
+/* o quadro: a foto com cantos grandes; o botao inteiro e a foto */
+.pf-quadro { position: relative; margin: 0; }
+.pf-quadro > button { display: block; width: 100%; padding: 0; border: 0; border-radius: 28px; overflow: hidden; background: var(--marinho); cursor: zoom-in; box-shadow: 0 24px 60px rgba(11, 27, 58, 0.14); }
+.pf-quadro img { display: block; width: 100%; height: auto; transition: transform 0.5s ease; }
+.pf-quadro > button:hover img { transform: scale(1.02); }
+.pf-destaque .pf-quadro img { aspect-ratio: 1400 / 512; object-fit: cover; }
+.pf-legenda {
+  position: absolute; left: 36px; bottom: -34px;
+  display: grid; gap: 4px; max-width: 360px;
+  padding: 20px 24px; border-radius: 18px;
+  background: #fff; box-shadow: 0 16px 40px rgba(11, 27, 58, 0.14);
+}
+.pf-legenda .olho { margin: 0; }
+.pf-legenda b { font-family: var(--baloo); font-weight: 800; font-size: 19px; line-height: 1.15; color: var(--marinho); }
+.pf-legenda span:last-child { font-size: 13px; color: #4A5468; }
+.pf-legenda-dir { left: auto; right: 36px; }
+.pf-destaque { padding-bottom: 34px; }
+/* cabeca das secoes com controles a direita */
+.pf-cabeca { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.pf-controles { display: flex; align-items: center; gap: 10px; }
+.pf-contador { font-family: var(--baloo); font-weight: 700; font-size: 14px; color: #8A94A8; letter-spacing: 0.04em; margin-right: 8px; font-variant-numeric: tabular-nums; }
+.pf-contador b { color: var(--marinho); font-size: 18px; }
+.pf-seta { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(11, 27, 58, 0.16); background: #fff; color: var(--marinho); display: grid; place-items: center; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.pf-seta svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.pf-seta:hover { background: var(--marinho); color: #fff; border-color: var(--marinho); }
+/* o trilho: cartoes altos, um por vez, deslizando com o dedo ou pelas setas */
+.pf-trilho {
+  list-style: none; margin: 28px 0 0; padding: 12px 60px 36px;
+  display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 60px;
+  scrollbar-width: none;
+}
+.pf-trilho::-webkit-scrollbar { display: none; }
+.pf-trilho li { flex: 0 0 380px; scroll-snap-align: start; }
+.pf-trilho button { display: block; width: 100%; padding: 0; border: 0; border-radius: 24px; overflow: hidden; background: var(--marinho); cursor: zoom-in; box-shadow: 0 18px 44px rgba(11, 27, 58, 0.14); }
+.pf-trilho img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.5s ease; }
+.pf-trilho button:hover img { transform: scale(1.03); }
+.pf-trilho p { margin: 14px 4px 0; display: grid; gap: 2px; }
+.pf-trilho p b { font-family: var(--baloo); font-weight: 800; font-size: 18px; color: var(--marinho); }
+.pf-trilho p span { font-size: 13px; color: #4A5468; }
+/* brinquedao: texto e foto alta lado a lado; depois uma foto larga */
+.pf-dupla-dentro { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 56px; align-items: center; }
+.pf-dupla-texto p:not(.olho) { margin: 18px 0 0; max-width: 42ch; font-size: 15.5px; line-height: 1.6; color: #4A5468; }
+.pf-dupla-texto .botao-vazio { margin-top: 24px; }
+.pf-alto img { aspect-ratio: 3 / 4; object-fit: cover; }
+.pf-largo { margin-top: 24px; }
+.pf-largo img { aspect-ratio: 1200 / 298; object-fit: cover; }
+/* fecho: a mesa dos doces e a chamada */
+.pf-fecho { padding-bottom: 96px; }
+.pf-fecho .pf-largo { margin-top: 0; }
+.pf-chamada { text-align: center; padding-top: 86px; }
+.pf-assinatura { margin: 0; font-family: var(--caveat); font-weight: 600; font-size: 34px; color: var(--rosa); line-height: 1; }
+.pf-assinatura .coracao { width: 20px; height: 20px; }
+.pf-chamada h2 { margin: 10px 0 24px; font-size: 44px; }
 /* o visualizador: foto grande por cima de tudo */
 .visor { position: fixed; inset: 0; z-index: 100; background: rgba(11, 27, 58, 0.94); display: flex; align-items: center; justify-content: center; padding: 20px; }
 .visor img { max-width: 100%; max-height: calc(100vh - 40px); border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
@@ -312,12 +356,25 @@ body.visor-aberto { overflow: hidden; }
   .festas-lista li:nth-child(4)::before { display: none; }
   .confete-esq, .confete-dir { display: none; }
 
-  .festas-abertura .caixa { padding: 0 20px; }
-  .festas-abertura h1 { font-size: 32px; }
-  .festas-abertura h1 .manuscrito { font-size: 38px; }
-  .festas-abertura .confete { display: none; }
-  .festas-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; padding: 0 20px; gap: 10px; }
-  .festas-grade li.larga, .festas-grade li.inteira { grid-column: span 2; }
+  .pf-caixa { padding: 0 20px; }
+  .pf-abertura { padding: 44px 0 28px; }
+  .pf-abertura h1 { font-size: 42px; }
+  .pf-abertura h1 .manuscrito { font-size: 48px; }
+  .pf-secao { padding-top: 56px; }
+  .pf-secao h2 { font-size: 30px; }
+  .pf-secao h2 .manuscrito { font-size: 36px; }
+  .pf-quadro > button { border-radius: 20px; }
+  .pf-destaque .pf-quadro img { aspect-ratio: 4 / 3; }
+  .pf-legenda, .pf-legenda-dir { position: static; margin: 14px 4px 0; max-width: none; padding: 0; box-shadow: none; background: transparent; }
+  .pf-destaque { padding-bottom: 0; }
+  .pf-cabeca { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pf-trilho { padding: 10px 20px 28px; gap: 14px; scroll-padding-left: 20px; margin-top: 18px; }
+  .pf-trilho li { flex: 0 0 78vw; }
+  .pf-dupla-dentro { grid-template-columns: 1fr; gap: 28px; }
+  .pf-largo img { aspect-ratio: 16 / 9; }
+  .pf-fecho { padding-bottom: 64px; }
+  .pf-chamada { padding-top: 48px; }
+  .pf-chamada h2 { font-size: 34px; }
 
   .galeria { padding: 50px 0 24px; }
   .galeria-dentro { grid-template-columns: 1fr; gap: 22px; }

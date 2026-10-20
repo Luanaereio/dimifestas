@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Festas · Dimi Festas</title>
-<meta name="description" content="Fotos das festas e do espaço do Dimi Festas: salão, decorações, brinquedão e mesas personalizadas.">
+<meta name="description" content="As festas do Dimi Festas em fotos: o salão, as decorações por tema, o brinquedão e as mesas de doces.">
 <meta name="theme-color" content="#0B1B3A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FF2D9B'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' font-size='17' fill='%23fff'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,36 +42,88 @@
   </nav>
 </header>
 
-<main>
+<main class="pf" data-galeria>
 
-<!-- ============================ ABERTURA ============================ -->
-<section class="festas-abertura">
-  <svg class="nuvem nuvem-a" viewBox="0 0 120 60" aria-hidden="true"><path d="M20 55h85a15 15 0 0 0 2-30 22 22 0 0 0-41-8 18 18 0 0 0-30 12A14 14 0 0 0 20 55z"/></svg>
-  <svg class="confete" viewBox="0 0 60 70" aria-hidden="true"><path d="M8 30 22 16" stroke="#FF2D9B"/><path d="M30 8l-4 20" stroke="#FFD400"/><path d="M38 30l16-10" stroke="#2EA7FF"/><path d="M14 52l12-12" stroke="#00C9A7"/></svg>
-  <div class="caixa">
-    <p class="olho-claro">Galeria</p>
-    <h1>Nossas festas, <span class="manuscrito">em fotos</span></h1>
-    <p>Um pouco do salão, do brinquedão e das decorações que já montamos por aqui. Toque em uma foto para ver maior.</p>
+<!-- ============================ ABERTURA: so tipografia e ar ============================ -->
+<section class="pf-abertura">
+  <div class="caixa pf-caixa">
+    <p class="olho">Galeria</p>
+    <h1>Cada festa,<br><span class="manuscrito">uma história.</span></h1>
+    <p class="pf-lede">Um recorte do que acontece por aqui: o salão pronto para receber, as decorações feitas para cada tema e o brinquedão que rouba a cena. Toque em qualquer foto para ver em tela cheia.</p>
   </div>
-  <svg class="onda onda-baixo" viewBox="0 0 1215 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14C130 0 250 0 370 14S580 28 720 14 950 2 1070 14s105 12 145 8V30H0z" fill="#fff"/></svg>
 </section>
 
-<!-- ============================ FOTOS ============================ -->
-<section class="festas-galeria" aria-label="Fotos">
-  <ul class="festas-grade" data-galeria>
-    <li class="larga alta"><button type="button" data-foto="img/festas-2.jpg"><img src="img/festas-2.jpg" alt="Salão do Dimi Festas com parede estrelada, mesas coloridas, balões e brinquedão" width="1400" height="511" loading="lazy"></button></li>
-    <li class="alta"><button type="button" data-foto="img/festas-6.jpg"><img src="img/festas-6.jpg" alt="Decoração de 15 anos com arco de balões rosa e verde e painel Mariana" width="700" height="949" loading="lazy"></button></li>
-    <li class="alta"><button type="button" data-foto="img/festas-7.jpg"><img src="img/festas-7.jpg" alt="Decoração de chá de bebê em azul com ursinho e estrelas" width="700" height="954" loading="lazy"></button></li>
-    <li class="larga"><button type="button" data-foto="img/festas-4.jpg"><img src="img/festas-4.jpg" alt="Brinquedão com piscina de bolinhas e escorregador azul" width="1200" height="298" loading="lazy"></button></li>
-    <li class="larga"><button type="button" data-foto="img/festas-5.jpg"><img src="img/festas-5.jpg" alt="Mesa de festa decorada com balões, letreiro Dimi Festas e número luminoso" width="1200" height="297" loading="lazy"></button></li>
-    <li class="alta"><button type="button" data-foto="img/festas-8.jpg"><img src="img/festas-8.jpg" alt="Brinquedão colorido com escorregadores e piscina de bolinhas" width="700" height="949" loading="lazy"></button></li>
-    <li class="larga alta"><button type="button" data-foto="img/festas-1.jpg"><img src="img/festas-1.jpg" alt="Salão do Dimi Festas com o logo na parede, mesas e brinquedão" width="1400" height="512" loading="lazy"></button></li>
-    <li class="alta"><button type="button" data-foto="img/festas-9.jpg"><img src="img/festas-9.jpg" alt="Mesa de festa Pokémon com Pikachu e balões coloridos" width="700" height="954" loading="lazy"></button></li>
-    <li class="inteira"><button type="button" data-foto="img/festas-3.jpg"><img src="img/festas-3.jpg" alt="Salão com mesas vermelhas e amarelas, balões e brinquedão ao fundo" width="1200" height="772" loading="lazy"></button></li>
+<!-- ============================ O SALAO: uma foto so, grande, com a legenda flutuando ============================ -->
+<section class="pf-destaque" aria-label="O salão">
+  <div class="caixa pf-caixa">
+    <figure class="pf-quadro">
+      <button type="button" data-foto="img/festas-1.jpg"><img src="img/festas-1.jpg" alt="Salão do Dimi Festas pronto para a festa, com o logo na parede, mesas coloridas e o brinquedão ao fundo" width="1400" height="512"></button>
+      <figcaption class="pf-legenda">
+        <span class="olho">O salão</span>
+        <b>Mesas, palco e brinquedão num só lugar.</b>
+        <span>Pronto para receber a sua família e os seus convidados.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ DECORACOES: trilho que desliza, uma foto grande de cada vez ============================ -->
+<section class="pf-secao" aria-labelledby="tituloDecor">
+  <div class="caixa pf-caixa pf-cabeca">
+    <div>
+      <p class="olho">Decorações</p>
+      <h2 id="tituloDecor">Um tema, <span class="manuscrito">mil detalhes</span></h2>
+    </div>
+    <div class="pf-controles" data-trilho-controles>
+      <span class="pf-contador"><b data-trilho-n>01</b> / 05</span>
+      <button class="pf-seta" type="button" data-trilho-seta="esq" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="pf-seta" type="button" data-trilho-seta="dir" aria-label="Próxima foto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <ul class="pf-trilho" data-trilho aria-label="Decorações por tema">
+    <li><button type="button" data-foto="img/festas-6.jpg"><img src="img/festas-6.jpg" alt="Decoração de 15 anos com arco de balões rosa e verde e painel com o nome Mariana" width="700" height="949" loading="lazy"></button><p><b>15 anos</b><span>rosa, verde e um painel com o nome dela</span></p></li>
+    <li><button type="button" data-foto="img/festas-7.jpg"><img src="img/festas-7.jpg" alt="Decoração de chá de bebê em tons de azul com ursinho e estrelas" width="700" height="954" loading="lazy"></button><p><b>Chá de bebê</b><span>azul, estrelas e um ursinho de guarda</span></p></li>
+    <li><button type="button" data-foto="img/festas-9.jpg"><img src="img/festas-9.jpg" alt="Mesa de festa Pokémon com Pikachu, pokébolas e balões coloridos" width="700" height="954" loading="lazy"></button><p><b>Pokémon</b><span>Pikachu de boas-vindas e pokébolas na mesa</span></p></li>
+    <li><button type="button" data-foto="img/festas-3.jpg"><img src="img/festas-3.jpg" alt="Salão com mesas vermelhas e amarelas, arranjos de balões e brinquedão ao fundo" width="1200" height="772" loading="lazy"></button><p><b>Confraternização</b><span>mesas coloridas para a turma inteira</span></p></li>
+    <li><button type="button" data-foto="img/festas-2.jpg"><img src="img/festas-2.jpg" alt="Salão com parede estrelada, mesa de doces ao fundo e Pikachu entre os balões" width="1400" height="511" loading="lazy"></button><p><b>Noite estrelada</b><span>a parede de estrelas que muda com a luz</span></p></li>
   </ul>
-  <div class="festas-chamada">
-    <span class="manuscrito">Gostou? Vamos montar a sua!</span>
-    <a class="botao botao-heroi" href="#contato" data-whatsapp="Olá! Vi as fotos no site do Dimi Festas e quero um orçamento.">Solicite seu orçamento <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+</section>
+
+<!-- ============================ BRINQUEDAO: texto e uma foto alta, lado a lado ============================ -->
+<section class="pf-secao pf-dupla" aria-labelledby="tituloBrinq">
+  <div class="caixa pf-caixa pf-dupla-dentro">
+    <div class="pf-dupla-texto">
+      <p class="olho">Brinquedão</p>
+      <h2 id="tituloBrinq">Para eles, <span class="manuscrito">o melhor lugar da festa</span></h2>
+      <p>Piscina de bolinhas, escorregadores, redes e túneis, em um espaço fechado e seguro, com a equipe por perto o tempo todo. Enquanto as crianças brincam, os adultos aproveitam a festa.</p>
+      <a class="botao botao-vazio" href="index.html#festas">Ver o que fazemos <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <figure class="pf-quadro pf-alto">
+      <button type="button" data-foto="img/festas-8.jpg"><img src="img/festas-8.jpg" alt="Brinquedão colorido com escorregadores e piscina de bolinhas" width="700" height="949" loading="lazy"></button>
+    </figure>
+  </div>
+  <div class="caixa pf-caixa">
+    <figure class="pf-quadro pf-largo">
+      <button type="button" data-foto="img/festas-4.jpg"><img src="img/festas-4.jpg" alt="Piscina de bolinhas coloridas com escorregador azul" width="1200" height="298" loading="lazy"></button>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ MESA DOS DOCES + CHAMADA ============================ -->
+<section class="pf-secao pf-fecho" aria-labelledby="tituloFecho">
+  <div class="caixa pf-caixa">
+    <figure class="pf-quadro pf-largo">
+      <button type="button" data-foto="img/festas-5.jpg"><img src="img/festas-5.jpg" alt="Mesa de doces decorada com balões, letreiro Dimi Festas e número luminoso" width="1200" height="297" loading="lazy"></button>
+      <figcaption class="pf-legenda pf-legenda-dir">
+        <span class="olho">Mesa dos doces</span>
+        <b>O centro de todas as fotos.</b>
+      </figcaption>
+    </figure>
+    <div class="pf-chamada">
+      <p class="pf-assinatura">Um espaço feito para sorrisos!<svg class="coracao" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/></svg></p>
+      <h2 id="tituloFecho">Vamos montar a sua?</h2>
+      <a class="botao botao-heroi" href="#contato" data-whatsapp="Olá! Vi as fotos no site do Dimi Festas e quero um orçamento.">Solicite seu orçamento <svg class="seta" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
 </section>
 
