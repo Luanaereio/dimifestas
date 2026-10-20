@@ -74,7 +74,7 @@ h2 { margin: 0; }
 .topo { position: sticky; top: 0; z-index: 30; background: #fff; box-shadow: 0 1px 0 rgba(11, 27, 58, 0.06); }
 .topo-dentro { height: 100px; display: flex; align-items: center; padding: 0 40px 0 38px; gap: 20px; }
 .logo { flex: none; line-height: 0; }
-.logo img { width: 216px; height: auto; display: block; }
+.logo img { width: 186px; height: auto; display: block; }
 .menu { flex: 1; display: flex; justify-content: flex-start; padding-left: 46px; }
 .menu ul { display: flex; gap: 36px; }
 .menu a { position: relative; display: block; padding: 6px 0; font-size: 15px; font-weight: 600; color: var(--marinho); text-decoration: none; transition: color 0.15s; }
@@ -199,7 +199,7 @@ h2 { margin: 0; }
    ===================================================================== */
 .rodape { position: relative; background: var(--marinho); color: #fff; padding: 14px 0 0; overflow: hidden; }
 .rodape-dentro { display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; padding: 0 24px 0 38px; min-height: 92px; z-index: 1; }
-.rodape-logo { width: 216px; height: auto; display: block; flex: none; }
+.rodape-logo { width: 200px; height: auto; display: block; flex: none; }
 .rodape-frase { margin: 0 4px; flex: 0 1 196px; font-family: var(--caveat); font-weight: 600; font-size: 20px; line-height: 1.05; text-align: center; transform: rotate(-5deg); }
 .rodape-frase .coracao { width: 16px; height: 16px; }
 .botao-whats { height: 68px; border-radius: 34px; padding: 0 28px 0 14px; gap: 12px; font-weight: 400; font-size: 15px; line-height: 1.15; flex: none; }
