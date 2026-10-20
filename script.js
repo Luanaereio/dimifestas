@@ -44,62 +44,47 @@
     secoes.forEach(function (s) { obs.observe(s); });
   }
 
-  // a vitrine da pagina Festas: um tema em destaque; o indice, as setas e o teclado trocam com uma transicao.
-  // Troca sozinha a cada 6 s ate a pessoa mexer; para com o mouse em cima e com a aba escondida.
-  var reduzido = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  var vitrine = document.querySelector('[data-vitrine]');
-  if (vitrine) {
-    var itensV = Array.prototype.slice.call(vitrine.querySelectorAll('[data-vitrine-item]'));
-    var palco = vitrine.querySelector('.vitrine-palco');
-    var grande = vitrine.querySelector('[data-vitrine-grande]');
-    var imgGrande = grande.querySelector('img');
-    var numeroV = vitrine.querySelector('[data-vitrine-n]');
-    var tituloV = vitrine.querySelector('[data-vitrine-titulo]');
-    var textoV = vitrine.querySelector('[data-vitrine-texto]');
-    var atualV = 0, relogioV = null, mexeu = false, trocandoV = false;
-    function mostrarV(i) {
-      atualV = (i + itensV.length) % itensV.length;
-      var item = itensV[atualV];
-      itensV.forEach(function (b, k) { b.setAttribute('aria-current', k === atualV ? 'true' : 'false'); });
-      if (numeroV) numeroV.textContent = (atualV + 1 < 10 ? '0' : '') + (atualV + 1);
-      palco.classList.add('trocando');
-      trocandoV = true;
-      window.setTimeout(function () {
-        imgGrande.src = item.getAttribute('data-foto');
-        imgGrande.alt = item.getAttribute('data-alt') || '';
-        grande.setAttribute('data-foto', item.getAttribute('data-foto'));
-        if (tituloV) tituloV.textContent = item.getAttribute('data-titulo') || '';
-        if (textoV) textoV.textContent = item.getAttribute('data-texto') || '';
-        var fim = function () { palco.classList.remove('trocando'); trocandoV = false; };
-        if (imgGrande.complete) fim(); else { imgGrande.onload = fim; imgGrande.onerror = fim; }
-      }, 220);
-      // o item escolhido entra na tela quando o indice e uma fila (celular)
-      if (item.scrollIntoView && window.matchMedia('(max-width: 980px)').matches) item.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  // o lookbook da pagina Festas: fotos deslizando na horizontal. Setas rolam, o contador acompanha a foto no
+  // comeco da tela, a barra mostra o progresso, e no computador da para arrastar com o mouse.
+  var lookbook = document.querySelector('[data-lookbook]');
+  if (lookbook) {
+    var faixa = lookbook.querySelector('ul');
+    var itensL = faixa.children;
+    var nL = document.querySelector('[data-lookbook-n]');
+    var barraL = document.querySelector('[data-lookbook-barra]');
+    function atualizarL() {
+      var max = faixa.scrollWidth - faixa.clientWidth;
+      if (barraL) barraL.style.width = (max > 0 ? Math.min(100, Math.max(0, (faixa.scrollLeft / max) * 100)) : 100) + '%';
+      var esquerda = faixa.scrollLeft + parseFloat(getComputedStyle(faixa).paddingLeft || '0');
+      var melhor = 0, dist = Infinity;
+      for (var i = 0; i < itensL.length; i++) { var d = Math.abs(itensL[i].offsetLeft - esquerda); if (d < dist) { dist = d; melhor = i; } }
+      if (max > 0 && faixa.scrollLeft >= max - 2) melhor = itensL.length - 1;
+      if (nL) nL.textContent = (melhor + 1 < 10 ? '0' : '') + (melhor + 1);
     }
-    function rodarV() { if (reduzido) return; window.clearInterval(relogioV); relogioV = window.setInterval(function () { if (!document.hidden && !mexeu) mostrarV(atualV + 1); }, 6000); }
-    function assumirV(i) { mexeu = true; window.clearInterval(relogioV); mostrarV(i); }
-    itensV.forEach(function (b, k) { b.addEventListener('click', function () { assumirV(k); }); });
-    Array.prototype.forEach.call(vitrine.querySelectorAll('[data-vitrine-seta]'), function (b) {
-      b.addEventListener('click', function () { assumirV(atualV + (b.getAttribute('data-vitrine-seta') === 'dir' ? 1 : -1)); });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-lookbook-seta]'), function (b) {
+      b.addEventListener('click', function () {
+        var dir = b.getAttribute('data-lookbook-seta') === 'dir' ? 1 : -1;
+        faixa.scrollBy({ left: dir * faixa.clientWidth * 0.7, behavior: 'smooth' });
+      });
     });
-    vitrine.addEventListener('mouseenter', function () { window.clearInterval(relogioV); });
-    vitrine.addEventListener('mouseleave', function () { if (!mexeu) rodarV(); });
-    vitrine.addEventListener('keydown', function (ev) {
-      if (ev.key === 'ArrowRight') { ev.preventDefault(); assumirV(atualV + 1); }
-      if (ev.key === 'ArrowLeft') { ev.preventDefault(); assumirV(atualV - 1); }
-    });
-    rodarV();
+    faixa.addEventListener('scroll', atualizarL, { passive: true });
+    window.addEventListener('resize', atualizarL);
+    var arr = { ativo: false, x: 0, s: 0, moveu: 0 };
+    faixa.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') return; arr.ativo = true; arr.x = ev.clientX; arr.s = faixa.scrollLeft; arr.moveu = 0; faixa.classList.add('arrastando'); });
+    window.addEventListener('pointermove', function (ev) { if (!arr.ativo) return; var dx = ev.clientX - arr.x; arr.moveu = Math.max(arr.moveu, Math.abs(dx)); faixa.scrollLeft = arr.s - dx; });
+    window.addEventListener('pointerup', function () { if (!arr.ativo) return; arr.ativo = false; faixa.classList.remove('arrastando'); });
+    // depois de arrastar, o clique que solta o mouse nao abre a foto
+    faixa.addEventListener('click', function (ev) { if (arr.moveu > 6) { ev.stopPropagation(); ev.preventDefault(); arr.moveu = 0; } }, true);
+    atualizarL();
   }
 
   // o visualizador das paginas Festas e Brinquedao: toque na foto abre grande, setas e Esc navegam e fecham.
-  // A lista e montada na hora de abrir (a foto grande da vitrine muda) e ignora a propria foto grande, que
-  // repetiria a miniatura do indice.
+  // A lista e montada na hora de abrir, na ordem em que as fotos aparecem na pagina.
   var galeria = document.querySelector('[data-galeria]');
   if (galeria) {
     var fotos = [];
     function listarFotos() {
-      fotos = Array.prototype.filter.call(galeria.querySelectorAll('[data-foto]'), function (b) { return !b.hasAttribute('data-vitrine-grande'); })
-        .map(function (b) { var img = b.querySelector('img'); return { src: b.getAttribute('data-foto'), alt: b.getAttribute('data-alt') || (img && img.alt) || '' }; });
+      fotos = Array.prototype.map.call(galeria.querySelectorAll('[data-foto]'), function (b) { var img = b.querySelector('img'); return { src: b.getAttribute('data-foto'), alt: (img && img.alt) || '' }; });
     }
     var atual = 0, visor = null;
     function montar() {
@@ -124,7 +109,6 @@
     function fechar() { if (visor) { visor.hidden = true; } document.body.classList.remove('visor-aberto'); }
     galeria.addEventListener('click', function (ev) {
       var b = ev.target.closest('[data-foto]'); if (!b) return;
-      if (b.hasAttribute('data-vitrine-item')) return; // no indice da vitrine o clique so troca o tema
       listarFotos();
       var src = b.getAttribute('data-foto');
       var i = 0; for (var k = 0; k < fotos.length; k++) if (fotos[k].src === src) { i = k; break; }
